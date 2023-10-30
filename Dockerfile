@@ -31,4 +31,4 @@ RUN curl -L -o /entrypoint.sh https://raw.githubusercontent.com/Cantue35/files/m
 COPY --from=proxy /tired-proxy /tired-proxy
 
 # Set the entrypoint to run the custom script
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ['/entrypoint.sh']
