@@ -27,9 +27,6 @@ COPY settings.json /root/.local/share/code-server/User/settings.json
 # Download the entrypoint.sh from a specific URL
 RUN curl -L -o /entrypoint.sh https://raw.githubusercontent.com/Cantue35/files/main/entrypoint.sh
 
-# Make the entrypoint script executable
-RUN chmod +x /entrypoint.sh
-
 # Copy Tired Proxy from the first stage (if required)
 COPY --from=proxy /tired-proxy /tired-proxy
 
