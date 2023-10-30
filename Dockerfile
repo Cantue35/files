@@ -24,13 +24,14 @@ RUN curl -L https://fly.io/install.sh | sh \
 # Apply VS Code settings for Python development (you can customize this)
 COPY settings.json /root/.local/share/code-server/User/settings.json
 
-# Copy a custom entrypoint script
-COPY entrypoint.sh /entrypoint.sh
+# Download the entrypoint.sh from a specific URL
+RUN curl -L -o /entrypoint.sh https://raw.githubusercontent.com/Cantue35/files/main/entrypoint.sh
+
+# Make the entrypoint script executable
+RUN chmod +x /entrypoint.sh
 
 # Copy Tired Proxy from the first stage (if required)
 COPY --from=proxy /tired-proxy /tired-proxy
-
-RUN chmod +x /entrypoint.sh
 
 # Set the entrypoint to run the custom script
 ENTRYPOINT ["/entrypoint.sh"]
